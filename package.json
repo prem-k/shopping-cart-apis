@@ -17,7 +17,11 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
-    "mongoose": "^5.1.7"
+    "mongo-server": "^0.1.5",
+    "mongodb": "^3.1.1",
+    "mongoose": "^5.2.5",
+    "poll": "0.0.1"
   }
 }

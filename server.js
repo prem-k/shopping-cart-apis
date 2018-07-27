@@ -3,13 +3,28 @@ const bodyParser = require('body-parser');
 
 // create express app
 const app = express();
-
+const cors = require('cors')
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 
-
 /***************************************/
+var originsWhitelist = [
+  'http://localhost:4200',      //this is my front-end url for development
+  'http://www.myproductionurl.com'
+];
+var corsOptions = {
+  origin: function(origin, callback){
+        var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+        callback(null, isWhitelisted);
+  },
+  credentials:true
+}
+//here is the magic
+app.use(cors(corsOptions));
+
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -22,7 +37,7 @@ app.use(bodyParser.json())
 mongoose.Promise = global.Promise;
 // Connecting to the database
 //console.log(dbConfig.url);
-mongoose.connect(dbConfig.url,function(err){ console.log('err->',err); })
+mongoose.connect(dbConfig.url,{ useNewUrlParser: true },function(err){ console.log('err->',err); })
 .then(() => {
     console.log("Successfully connected to the database");    
 }).catch(err => {

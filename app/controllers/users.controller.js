@@ -11,10 +11,15 @@ exports.create = (req, res) => {
 
     // Create a user
     const user = new User({
-        name: req.body.name || "Untitled user", 
+        type : req.body.type,
+        name: req.body.name, 
         email: req.body.email,
         password: req.body.password,
-        type : req.body.type,
+        phone: req.body.phone,
+        gender: req.body.gender,
+        country: req.body.country,     
+        status: req.body.status,    
+        zip_code: req.body.zip_code,
         address: req.body.address
     });
 
