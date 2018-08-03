@@ -4,7 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "echo 'run dev' & npm start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "./node_modules/nodemon/bin/nodemon.js --config nodemon.json --exec npm run dev "
   },
   "keywords": [
     "Express",
@@ -22,6 +25,10 @@
     "mongo-server": "^0.1.5",
     "mongodb": "^3.1.1",
     "mongoose": "^5.2.5",
+    "multer": "^1.3.1",
     "poll": "0.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
   }
 }

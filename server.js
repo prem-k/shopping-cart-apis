@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const multer = require('multer');
 // create express app
 const app = express();
 const cors = require('cors')
@@ -44,7 +44,7 @@ mongoose.connect(dbConfig.url,{ useNewUrlParser: true },function(err){ console.l
     console.log('Could not connect to the database. Exiting now...');
     process.exit();
 });
-require('./app/routes/users.routes.js')(app);
+require('./app/routes/routes.js')(app);
 /***************************************/
 
 // define a simple route
